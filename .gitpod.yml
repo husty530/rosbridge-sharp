@@ -8,7 +8,8 @@ tasks:
       DISTRO=foxy && sudo apt update && sudo apt install -y wget git curl gnupg lsb-release software-properties-common && sudo add-apt-repository universe && \
       sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
       echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null && \
-      sudo apt update && sudo apt upgrade -y && sudo apt install -y ros-${DISTRO}-desktop ros-${DISTRO}-rosbridge-suite python3-argcomplete ros-dev-tools python3-colcon-common-extensions &&  \
+      sudo apt update && sudo apt upgrade -y && sudo apt install -y ros-${DISTRO}-desktop ros-${DISTRO}-rosbridge-suite && \
+      pip install numpy netifaces pymongo pillow && \
       echo "source /opt/ros/${DISTRO}/setup.bash" >> ~/.bashrc && source ~/.bashrc && \
       sudo wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
       sudo dpkg -i packages-microsoft-prod.deb && \
